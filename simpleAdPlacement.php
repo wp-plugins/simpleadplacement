@@ -3,7 +3,7 @@
 Plugin Name: simpleAdPlacement 
 Plugin URI: http://www.hydronitrogen.com/projects/simpleadplacement/
 Description: A tool which allows the simple placement of ads after posts, or on the bottom of pages.
-Version: 0.80
+Version: 0.81
 Author: Hamel Ajay Kothari
 Author URI: http://www.hydronitrogen.com/
 License: GPL2
@@ -38,7 +38,7 @@ if(is_admin())
 	function simpleAdOptionsHtml()
 	{ ?>
 		<h2>SimpleAdPlacement Options</h2>
-		<form method=\"post\" action=\"options.php\">
+		<form method="post" action="options.php">
 		<?php wp_nonce_field('update-options'); ?>
 		<table>
 			<tr>
@@ -52,7 +52,7 @@ if(is_admin())
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<strong>Enter your ad code for the shortcode: (To use it, just type [simpleAdPlacement] in a post or widget)</strong><br />
 					<textarea name="simpleAd_shortAdCode" cols="50" rows="20"><?php echo get_option("simpleAd_shortAdCode"); ?></textarea><br />
 				</td>

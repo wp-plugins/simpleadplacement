@@ -4,7 +4,7 @@ Donate link: http://www.hydronitrogen.com/
 Tags: advertising, ads, placement
 Requires at least: 2.0.2
 Tested up to: 2.9.2
-Stable tag: 0.80
+Stable tag: 0.81
 
 simpleAdPlacement aims to be just what its name says. It allows you to easily place your
 advertisements in specified locations of pages.
@@ -21,6 +21,9 @@ advertisements in specified locations of pages.
 * Shortcodes - This allows you to use shortcodes to place ads wherever you want. Just insert [simpleAdPlacement]
 
 == ChangeLog ==
+
+= 0.81 =
+* Fixed minor admin bug.
 
 = 0.80 =
 * Added shortcode support.
