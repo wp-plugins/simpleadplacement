@@ -3,7 +3,7 @@
 Plugin Name: simpleAdPlacement 
 Plugin URI: http://www.hydronitrogen.com/projects/simpleadplacement/
 Description: A tool which allows the simple placement of ads after posts, or on the bottom of pages.
-Version: 0.81
+Version: 0.90
 Author: Hamel Ajay Kothari
 Author URI: http://www.hydronitrogen.com/
 License: GPL2
@@ -16,6 +16,7 @@ function simpleAdInstall()
 {
 	add_option("simpleAd_postAdCode");
 	add_option("simpleAd_bottomAdCode");
+	add_option("simpleAd_preFooterAdCode");
 	add_option("simpleAd_shortAdCode");
 }
 
@@ -23,6 +24,7 @@ function simpleAdUninstall()
 {
 	delete_option("simpleAd_postAdCode");
 	delete_option("simpleAd_bottomAdCode");
+	delete_option("simpleAd_preFooterAdCode");
 	delete_option("simpleAd_shortAdCode");
 }
 
@@ -52,24 +54,33 @@ if(is_admin())
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td>
+					<strong>Enter your ad code for the area right above the footer here:</strong><br />
+					Note, this might not work if your theme uses a div id other than "footer" for the footer. It probably does though.<br />
+					<textarea name="simpleAd_preFooterAdCode" cols="50" rows="20"><?php echo get_option("simpleAd_preFooterAdCode"); ?></textarea><br />
+				</td>
+				<td>
 					<strong>Enter your ad code for the shortcode: (To use it, just type [simpleAdPlacement] in a post or widget)</strong><br />
 					<textarea name="simpleAd_shortAdCode" cols="50" rows="20"><?php echo get_option("simpleAd_shortAdCode"); ?></textarea><br />
 				</td>
 			</tr>
 		</table>
 		<input type="hidden" name="action" value="update" />
-		<input type="hidden" name="page_options" value="simpleAd_postAdCode,simpleAd_bottomAdCode,simpleAd_shortAdCode" /><br />
-		<input type="submit" value="Save Changes" /><br />
-
-		If you feel this plugin was helpful, please consider giving it a good rating on wordpress.org and clicking the works button. Thanks!';
-
+		<input type="hidden" name="page_options" value="simpleAd_postAdCode,simpleAd_bottomAdCode,simpleAd_preFooterAdCode,simpleAd_shortAdCode" /><br />
+		If you feel this plugin was helpful, please consider giving it a good rating on wordpress.org and visiting <a href="http://www.hydronitrogen.com" target="_blank">my site.</a> Thanks!<br />
+		<input type="submit" value="Save Changes" />
 	<?php }
+}
+
+add_action('init', 'simpleAdInit');
+function simpleAdInit()
+{
+	wp_enqueue_script('jquery');
 }
 
 add_filter('the_content', 'simpleAdPostAds');
 add_action('wp_footer', 'simpleAdBottomAds');
-
+add_action('get_footer', 'simpleAdPreFooterAds');
 function simpleAdPostAds($content)
 {
 	if(is_single())
@@ -80,7 +91,21 @@ function simpleAdPostAds($content)
 
 function simpleAdBottomAds()
 {
-	echo "<div align=\"center\">" . get_option("simpleAd_bottomAdCode") .  "</div>";
+	echo get_option("simpleAd_bottomAdCode");
+}
+
+function simpleAdPreFooterAds()
+{
+	echo "<div id=\"simpleAdPreFooter\">" . get_option("simpleAd_preFooterAdCode") . "</div>";
+	echo <<<EOF
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('#simpleAdPreFooter').insertBefore('#footer');
+		});
+	</script>
+
+EOF;
 }
 
 add_shortcode("simpleAdPlacement", "simpleAdPlacementShortCode");

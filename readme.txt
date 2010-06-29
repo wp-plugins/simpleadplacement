@@ -4,7 +4,7 @@ Donate link: http://www.hydronitrogen.com/
 Tags: advertising, ads, placement
 Requires at least: 2.0.2
 Tested up to: 2.9.2
-Stable tag: 0.81
+Stable tag: 0.90
 
 simpleAdPlacement aims to be just what its name says. It allows you to easily place your
 advertisements in specified locations of pages.
@@ -21,6 +21,10 @@ advertisements in specified locations of pages.
 * Shortcodes - This allows you to use shortcodes to place ads wherever you want. Just insert [simpleAdPlacement]
 
 == ChangeLog ==
+
+= 0.90 =
+* Added placement before the footer.
+* Note, prefooter placement might not work if your theme's footer is not id'd as "footer"
 
 = 0.81 =
 * Fixed minor admin bug.
