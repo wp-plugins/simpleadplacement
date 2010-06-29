@@ -3,7 +3,7 @@
 Plugin Name: simpleAdPlacement 
 Plugin URI: http://www.hydronitrogen.com/projects/simpleadplacement/
 Description: A tool which allows the simple placement of ads after posts, or on the bottom of pages.
-Version: 0.90
+Version: 0.91
 Author: Hamel Ajay Kothari
 Author URI: http://www.hydronitrogen.com/
 License: GPL2
@@ -107,6 +107,11 @@ function simpleAdPreFooterAds()
 
 EOF;
 }
+
+// For shortcodes to work we need to make sure that do_shortcode is called.
+add_filter('the_content', 'do_shortcode', 11);
+//if(!is_admin())
+add_filter('widget_text', 'do_shortcode');
 
 add_shortcode("simpleAdPlacement", "simpleAdPlacementShortCode");
 
