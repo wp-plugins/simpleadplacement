@@ -1,10 +1,10 @@
 === simpleAdPlacement ===
 Contributors: hkothari 
 Donate link: http://www.hydronitrogen.com/
-Tags: advertising, ads, placement
+Tags: advertising, ads, placement, adsense
 Requires at least: 2.0.2
 Tested up to: 3.0
-Stable tag: 0.91
+Stable tag: 0.92
 
 simpleAdPlacement aims to be just what its name says. It allows you to easily place your
 advertisements in specified locations of pages.
@@ -22,6 +22,9 @@ advertisements in specified locations of pages.
 * Shortcodes - This allows you to use shortcodes to place ads wherever you want. Just insert [simpleAdPlacement]
 
 == ChangeLog ==
+
+= 0.92 =
+* Added jQuery tabs to the administration interface to make it a little nicer to look at.
 
 = 0.91 =
 * Added forcing of shortcodes on widgets, just in case they're not enabled.
