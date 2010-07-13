@@ -3,7 +3,7 @@
 Plugin Name: simpleAdPlacement 
 Plugin URI: http://www.hydronitrogen.com/projects/simpleadplacement/
 Description: A tool which allows the simple placement of ads after posts, or on the bottom of pages.
-Version: 0.92
+Version: 0.93
 Author: Hamel Ajay Kothari
 Author URI: http://www.hydronitrogen.com/
 License: GPL2
@@ -18,6 +18,8 @@ function simpleAdInstall()
 	add_option("simpleAd_bottomAdCode");
 	add_option("simpleAd_preFooterAdCode");
 	add_option("simpleAd_shortAdCode");
+
+	add_option("simpleAd_footerDivId", "footer");
 }
 
 function simpleAdUninstall()
@@ -26,6 +28,8 @@ function simpleAdUninstall()
 	delete_option("simpleAd_bottomAdCode");
 	delete_option("simpleAd_preFooterAdCode");
 	delete_option("simpleAd_shortAdCode");
+
+	delete_option("simpleAd_footerDivId");
 }
 
 if(is_admin())
@@ -66,6 +70,7 @@ if(is_admin())
 				<li><a href="#tabBottom">Page Bottom</a></li>
 				<li><a href="#tabAboveFooter">Above Footer</a></li>
 				<li><a href="#tabShortCode">Short Code</a></li>
+				<li><a href="#tabConfig">Configuration</a></li>
 			</ul>
 			
 			<div id="tabSingle">
@@ -89,9 +94,16 @@ if(is_admin())
 				To use it, just type [simpleAdPlacement] in a post or widget.<br />
 				<textarea name="simpleAd_shortAdCode" cols="50" rows="20"><?php echo get_option("simpleAd_shortAdCode"); ?></textarea><br />
 			</div>
+
+			<div id="tabConfig">
+				<p>If you're having problems with the "Above Footer" ad not showing up above the footer, your footer
+				div is probably not id'd as "footer" view the source on your home page and find the id of your footer
+				and enter it below.</p>
+				<strong>Footer Div ID:</strong><input type="text" name="simpleAd_footerDivId" value="<?php echo get_option("simpleAd_footerDivId"); ?>" /><br />
+			</div>
 		</div>
 		<input type="hidden" name="action" value="update" />
-		<input type="hidden" name="page_options" value="simpleAd_postAdCode,simpleAd_bottomAdCode,simpleAd_preFooterAdCode,simpleAd_shortAdCode" /><br />
+		<input type="hidden" name="page_options" value="simpleAd_postAdCode,simpleAd_bottomAdCode,simpleAd_preFooterAdCode,simpleAd_shortAdCode,simpleAd_footerDivId" /><br />
 		If you feel this plugin was helpful, please consider giving it a good rating on wordpress.org and visiting <a href="http://www.hydronitrogen.com" target="_blank">my site.</a> Thanks!<br />
 		<input type="submit" value="Save Changes" />
 	<?php }
@@ -126,7 +138,7 @@ function simpleAdPreFooterAds()
 
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$('#simpleAdPreFooter').insertBefore('#footer');
+			$('#simpleAdPreFooter').insertBefore('#<?php echo get_option('simpleAd_footerDivId'); ?>');
 		});
 	</script>
 
