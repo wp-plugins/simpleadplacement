@@ -4,7 +4,7 @@ Donate link: http://www.hydronitrogen.com/
 Tags: advertising, ads, placement, adsense
 Requires at least: 2.0.2
 Tested up to: 3.0
-Stable tag: 0.93
+Stable tag: 0.94
 
 simpleAdPlacement aims to be just what its name says. It allows you to easily place your
 advertisements in specified locations of pages.
