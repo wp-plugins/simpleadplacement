@@ -3,8 +3,8 @@ Contributors: hkothari
 Donate link: http://www.hydronitrogen.com/
 Tags: advertising, ads, placement, adsense
 Requires at least: 2.0.2
-Tested up to: 3.0
-Stable tag: 0.94
+Tested up to: 3.0.1
+Stable tag: 0.95
 
 simpleAdPlacement aims to be just what its name says. It allows you to easily place your
 advertisements in specified locations of pages.
@@ -21,7 +21,18 @@ advertisements in specified locations of pages.
 * Bottom of Page - This is the area at the very bottom of the page. After the footer.
 * Shortcodes - This allows you to use shortcodes to place ads wherever you want. Just insert [simpleAdPlacement]
 
+== Frequently Asked Questions ==
+
+= Where do I find the settings for the plugin? =
+In the admin backend, look under Settings -> SimpleAdPlacement
+
+= Why is the ad for "Above Footer" not showing up above the footer? =
+Your footer div is probably not id'd as "footer" try to look in the source of your site to find the id of the footer and change it in the configuration tab.
+
 == ChangeLog ==
+
+= 0.95 =
+* Custom footer div ID in settings.
 
 = 0.92 =
 * Added jQuery tabs to the administration interface to make it a little nicer to look at.
